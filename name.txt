@@ -1,0 +1,3 @@
+John\t33\tEngland
+Smith\t39\tUSA
+Kim\t25\tKorea

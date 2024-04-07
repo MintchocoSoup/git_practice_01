@@ -1,0 +1,112 @@
+4. 문서 편집기
+  - vi, vim, emacs, notepad++, ...
+  - "vi"sual editor
+     - vim - vi improved
+  - 프롬프트에서 파일을 직접 편집할 수 있게 해주는 툴
+  - 특징
+    - 화면 단위 편집기
+    - 유닉스 계열에서 가장 많이 사용함
+    - 텍스트 편집 기능만 제공함
+    - "less"
+    - 모드: 일반모드 <-> 입력모드 <-> 명령모드
+            (모드 변환키: esc)
+      - 입력모드: 
+        - i: 현 커서에서 입력
+        - a: 현 커서 한 칸 뒤에서 입력
+        - o: 한 줄 추가 후 입력
+      - 명령모드: 파일 저장, 덮어쓸건지, 빠져나갈건지 등
+      => vi로 파일 열기 -> 입력모드 -> esc -> 빠져나가기
+        - 빠져나가는 방법: $ :wq! + enter
+
+
+Linux Ch.02
+5. 패턴 매칭
+- 프롬프트에서 셸, 프로그램 작동한다.
+  grep Linux sample.txt
+    -> grep: 프로그램 담당 / Linux, sample.txt -> Shell 담당
+- 프롬프트는 우리가 명령을 실행하는 곳
+- 셸은 사용자와 리눅스 운영체제를 연결해주는 매개체
+* 리눅스 - 셸, 프롬프트 - 사용자
+  - 셸의 역할: 명령 실행, 와일드카드 처리, 파이프라인 처리
+    grep Linux *.txt 
+    셸은 해당 명령행에서 *.txt를 sample.txt, a.txt로 읽어들이는 역할
+    - 셸이 패턴 매칭을 처리하여 결과물을 프로그램에 보낸다. 
+    - head xxxx | grep | ....
+
+  1) *
+    - zero or more
+    - *.txt : .txt, animals.txt, ... -> .txt 확장자로 된 파일들의 패턴을 잡는다
+    - 0개 이상의 연속열과 일치하는
+    - 매칭되는 파일이 없으면 에러 
+    - 디렉토리 경로, 파일명
+
+  2) ?
+    - 1개 매칭
+      Ch01, Ch02, ... ,Ch99 중
+      grep Linux Ch? //1자리만 매칭
+      grep Linux Ch?? //2자리만 매칭
+
+  3) [ ]
+    - 대괄호 안에 열거되어 있는 것 중 일치하는 문자열 1개 있을때
+      grep Linux Ch[12345] // 12 (X), 123 (X)
+      grep Linux Ch[1-5]
+
+  Q. 짝수로 끝나는 모든 파일
+  => grep Linux Ch*[24680]
+  Q. 대문자로 시작하고, 언더스코어(_) 포함되어있는 파이썬 파일 매칭
+  [a-z] [A-Z]
+  => grep Linux [A-Z]*_*.py
+  Q. /etc 디렉토리안에 파일 확장자가 .conf인 파일 목록 조회하기
+  => ls /etc/*.conf ★
+
+6. 변수평가
+  - $VAR - 이미 지정된 변수
+  - $var - 사용자가 지정하는 변수
+      ls $var
+        -> var=./notes/w3.txt
+      ls ./notes/w3.txt
+
+  - $HOME - 루트 디렉토리
+  - $USER - 사용자명
+    - printenv: $없이도 출력해주는 친구
+    - echo로 부를땐 $필요함
+    - ex) $ echo my directory is $HOME
+          my directory is /home/runner
+
+  - 변수 설정
+    - name=lee
+      - 공백이 없어야함 (공백은 프로그램 구분자로 사용하기 때문)
+      - 변수=값 으로 선언
+      - 변수를 사용하려면 $변수명 으로 호출
+      Q. age변수에 자신의 나이를 담고 "내 나이는 ...살이다."출력
+
+    - 자주 사용하는 디렉토리를 변수로 선언하고 사용하면 편리
+      - dir01=$HOME/notes/week4
+      - $dir01
+      - cd $dir01
+
+7. 패턴과 변수
+mammals 
+  ㄴ lizard.txt
+  ㄴ snake.txt
+  ㄴ ....txt
+  ㄴ ...
+  reptiles
+
+ - mv: 이동 
+    - mv <from><to>
+Q. lizard와 snake를 reptiles로 이동 
+ - (변수에 담아) => dir1=mammals/*.txt
+                   mv $dir1 reptiles 
+ - (패턴 매칭) => mv mammals/*.txt reptiles
+
+8. alias
+- 단축어를 별명으로 설정하기
+- alias uniqc="uniq -c"
+- removeall="rm -r"
+
+- shadowing (있는 이름으로 별명을 설정)
+  alias grep="grep Linux *.txt"
+  alias ls="ls -l"
+
+- alias 취소: unalias uniqc
