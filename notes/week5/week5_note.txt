@@ -6,7 +6,7 @@
       - stdin: #0
       - stdout: #1
       - stderr: #2
-      - out/ err : 다른 방식으로(루트로) 출력된다
+      - out/ err : 서로 다른 방식으로(루트로) 출력된다
 
   * 리다이렉션이란?
     - 입출력 방향을 다른 곳으로 바꾼
@@ -21,7 +21,7 @@
         ex) grep Perl animals.txt > Perl.txt
 
         # cat
-          - cnocatenate: 연속으로 이어 붙인다
+          - concatenate: 연속으로 이어 붙인다
           - cat <파일이름1, 2, 3, ...> ; cat grades,letters
             - 파일 1 + 2 + 3 ...
             - 파일 1 2

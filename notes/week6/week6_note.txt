@@ -1,0 +1,94 @@
+#1. 캐럿을 이용한 히스토리 확장
+md5sum *.jp | ... | ...
+
+^jp^jpg
+<패턴>: s/from_cmd/to_cmd
+!!: 
+
+
+SUMMARY
+
+#1 Programs
+
+<프로그램><옵션><인수>
+  - -ch
+  - 디렉토리, ...
+  - ex) ls -l /usr/passwd
+
+  1) date
+    - 날짜와 시간을 표시
+  2) who
+    - 로그인 한 유저 정보: repl에선 runner
+  3) echo
+    - echo 뒤의 문자열을 모두 출력
+    - 공백 무시
+    - 변수는 내용물을 보여줌
+  4) ls
+    - 파일 디렉토리 조회
+    - -l : 한줄씩 더 자세히
+      - d...
+      - -...
+      ...      
+    - -a : 숨겨진 파일까지 모두 조회
+    - multi column으로 stdout
+    - 인수가 디렉토리임
+    - 디렉토리가 아닌 파일명을 받으면 그대로 다시 출력
+  5) cat 
+    - concatenate
+    - 여러 파일을 순차적으로 붙여 읽어줌
+    - 파일 이어붙이기 가능 (컨텐츠 확장할 때 사용)
+  6) wc
+    - line, word, char 세기
+    - -l, -w, -c
+    - 인수가 없으면 stdin으로 받는다
+  7) cp
+    - copy fromA toB
+    - A를 복사해 B로 저장
+      - 상대 경로로 쓰는게 편함
+      - 같은 파일명일 경우 이름을 안써도 됨
+        ex) cp A ./notes
+    - 여러 파일 복사 가능
+      cp 1 2 3 4 5 6
+      1-5 from, 6 to
+    Q. runner에서 notes/b를 복사해서 가져오는 코드 작성.
+    runner/OSS/notes/b
+    A: cp ./OSS/notes/b .
+  8) mv
+    - move
+    - mv fromA toB
+    - syntax는 cp와 같음
+    - 이름을 변경할 때 주로 사용
+      mv a aa // a가 사라지고 aa로 저장됨
+    - 디렉토리 A -> B // 복사가 아닌 이동
+    - 기존에 존재하는 파일명이라면 덮어쓴다
+
+  9) rm
+    - remove
+    - 파일명, 디렉토리
+      - empty
+    - -r
+    - 여러개 지울 수 있다. 
+      rm a b c d
+      rm *.txt
+    - 확인하고 지울것
+
+  //디렉토리 관련 명령
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+       
+
