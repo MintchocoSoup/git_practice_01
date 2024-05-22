@@ -1,0 +1,8 @@
+*.a
+!lib.a
+/TODO
+!$HOME/**/TODO
+build/
+doc/notes.txt
+!doc/server/arch.txt
+doc/**/*.pdf
