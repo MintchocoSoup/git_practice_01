@@ -17,4 +17,9 @@
   쉽게 찾아볼 수 있도록 정리
 - **img**: README.md에 이미지를 넣을 수 있도록 이미지를 담아둔 폴더
 - **trashcan**: 매 주 생성되는 예제들 중 뭔가 지우기 아까운 파일들을 담아둔 폴더
+
+  ## Syllabus
+  |Week|내용|링크|
+  |:---|:---|:---|
+  |01|Shell과 Git의 기초|[week1_note (Shell)](./notes/week1/week1_note_Shell.txt) <br> [week1_note (Git)](./notes/week1/week1_note_Git.txt)|
   
