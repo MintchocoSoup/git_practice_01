@@ -22,4 +22,14 @@
   |Week|내용|링크|
   |:---|:---|:---|
   |01|Shell과 Git의 기초|[week1_note (Shell)](./notes/week1/week1_note_Shell.txt) <br> [week1_note (Git)](./notes/week1/week1_note_Git.txt)|
+  |02|Shell의 문법과 각종 명령|[week2_note](./notes/week2/week2_note.txt)
+  |03||[week3_note](./notes/week3/week3_note.txt)
+  |04|Shell의 문법과 각종 명령|[week4_note](./notes/week4/week4_note.txt)
+  |05|Shell의 문법과 각종 명령|[week5_note](./notes/week5/week5_note.txt)
+  |06|Shell의 문법과 각종 명령|[week6_note](./notes/week6/week6_note.txt)
+  |07|Shell의 문법과 각종 명령|[week7_note](./notes/week7/week7_note.txt)
+  |09|Shell의 문법과 각종 명령|[week9_note](./notes/week9/week9_note.txt)
+  |11|Shell의 문법과 각종 명령|[week11_note](./notes/week11/week11_note.txt)
+  |12|Shell의 문법과 각종 명령|[week12_note](./notes/week12/week12_note.txt)
+  
   
