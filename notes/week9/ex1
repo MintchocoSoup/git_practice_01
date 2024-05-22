@@ -1,0 +1,8 @@
+#!/bin/bash
+
+echo hello world #<-주석
+echo $1 $2
+echo "$#" #""으로 막을 것. 항상 해주는 것이 좋음
+
+name="$1"
+echo $name

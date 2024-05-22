@@ -1,0 +1,16 @@
+#!/bin/bash
+
+dir="$1"
+echo $dir
+echo "$dir"
+
+directory=$(pwd)
+echo "현재 위치:" \ $directory 
+
+folder_count=$(ls -l "$dir" | cut -d' ' -f1 | grep "d" | wc -l)
+echo "폴더:" \ $folder_count\ "개, "
+
+file_count=$(ls -l "$dir" | cut -d' ' -f1 | grep -v "d" | grep "-" | wc -l)
+echo "파일:" \ $file_count\ "개입니다."
+
+#*넣었을때 해결하기

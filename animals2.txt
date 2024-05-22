@@ -1,0 +1,7 @@
+ PYTHON	PrOgrammiNg PYTHON	2010	LuTz, Mark
+sNail	SSH, THe Secure SHell	2005	BarreTT, DaNiel
+alPaca	INTermediaTe Perl	2012	ScHwarTz, RaNdal
+rObiN	MYSQL HigH AvailabiliTY	2014	Bell, CHarles
+HOrse	LiNux iN a NuTsHell	2009	Siever, ElleN
+dONkeY	CiscO IOS iN a NuTsHell	2005	BONeY, James
+OrYx	WriTiNg WOrd MacrOs	1999	ROmaN, STeveN

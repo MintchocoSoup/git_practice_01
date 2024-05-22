@@ -1,0 +1,97 @@
+#1. 변수
+  - 선언
+    $ var='con ten ts'
+    $ var=contents
+    - 공백이 없어야 함
+    - 데이터 타입이 없음. 모두 문자열로 인식됨
+  - 사용
+   $ echo $var
+   - 셸이 값을 치환해줌
+   - when? 프로그램이 구동되면 var을 치환하고 echo contents를 실행시킴
+  - [a-z_A-Z_0-9]*
+
+  ## 할당
+    - 프로그램 이름도 변수로 받을 수 있음
+      $ command=wc
+      $ op=-c
+      $ $command $op animals.txt
+    - 다른 변수도 새 변수로 할당할 수 있다
+     $ var2=$var
+     $ echo $var2
+    - 선언하지 않은 변수: null(빈칸. 무시됨)이 설정됨 (오류가 아님)
+
+  ## null
+    $ var=
+    $ var=""
+    $ var=''  //이상 3개는 null
+    $ var=' ' //공백 1개
+
+  ## 변수 활용
+    - file=grades -> grades1
+    - ${변수} 구조
+    - ${file}1 -> grades1
+    Q. grades -> grades1
+    A. mv $file ${file}1
+
+  ## substring 추출하기
+    - animals.txt -> animals.md
+    - ${var:start:size}
+    - ${var:10:4} // 10~14; start:end
+    Q. animals.txt -> animals.md
+    A. mv $var ${var:0:7}.md
+
+  ## $((변수)) 구조 (표현식)
+    - 수학 연산을 해주는 구조
+    - 숫자인 문자열이 들어왔을 때, 숫자로 인식함
+    Q. 5를 변수에 담고 활용해서 15를 변수에 담아보라
+    A. five=5
+      fifteen=$(( five * 3 
+    - $(( ten = ten + 1 )) -> 선언하지 않은 변수 ten은 null값이고 null+1=1이기에 1이 출력됨 (초깃값 null은 0)
+    - 비교연산
+     $(( ten > 0 )) //1 == true, 0 == false
+    Q. 임의의 수 num이 2의 배수인지 확인하는 코드 작성하기
+    A. echo $(( num % 2 == 0 ))
+
+  ## $( ) 표현
+    - 명령의 결과값을 변수에 담고 싶을 때
+    - result=$(cat /etc/passwd | cut -d: -f1) ★
+
+# 스크립트 파일 작성하기
+  - 파일 확장자는 .sh or none
+  - #!/bin/bash //이 파일이 bash로 돌아간다는 것을 지정해주는 코드. 외워서 달아야함
+  - echo hello world #<-주석
+  1) 파일을 실행가능한 상태로 바꾼다 (chmod)
+  2) 실행하기
+  - shebang(#!) 달기
+
+  ## 위치 인수 (positional argument)
+    - $n
+    - 외부에서 인수를 받아와 사용할 때 
+    - ${10} : 10이상일 때
+
+  ## $#
+    - 총 인수 개수
+    - 큰 따옴표로 인수를 감싸는 습관이 필요함
+    Q. 디렉토리를 인수로 받아서, 파일과 디렉토리 개수를 세는 스크립트를 짜기(count)
+
+    ###Q. 디렉토리를 인수로 받아서 파일과 디렉토리 개수를 세는 스크립트
+    파일명: count
+
+    test case1: .
+    test case2: *
+
+  ## $*
+    - 모든 인수를 출력해주는 변수
+
+    ###Q. 전화번호부 관리
+      1) 검색
+        ./book.sh 이름
+
+      2) 추가
+        이름, 번호를 인자로 넣어 추가하기
+
+      3) 삭제
+        이름 검색 후 이름, 번호를 삭제하기
+        
+  
+  

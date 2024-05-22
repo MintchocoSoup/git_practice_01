@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Minsu P로만 했을때 grep가능하도록
+name=$1
+num=$2
+
+#Search
+search=$( cat book.txt | grep "$*" ) #이렇게 하면 모든 인자를 서치에 사용함.
+echo $search
+
+#Add
+#add=$( echo "$name" "$num" | cat >> book.txt )
+
+#Delete
+#delete=$( cat book.txt | grep "$name" | tr "" )
