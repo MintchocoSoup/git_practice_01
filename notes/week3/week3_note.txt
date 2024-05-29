@@ -1,0 +1,43 @@
+문서 편집 명령어: vi
+
+문서 편집기 역할: 프롬프트에서 문서를 직접 편집하고 수정할 수 있음
+
+모드 종류:일반모드, 입력모드, 명령모드 ★
+
+입력 모드 3종류와 능력: i:현 커서에서 입력 / a:현 커서 한 칸 뒤에 입력 / o:한 줄 추가후 입력 
+
+빠져나가는 방법:esc로 조작모드 진입후 :wq! + 엔터키
+
+grep Linux Sample.txt에서 shell이 담당하는 부분은?:Linux, Sample.txt
+
+
+셸의 역할 3가지:파이프라인 연결, 명령 실행, 와일드카드 처리 ★
+
+짝수로 끝나는 모든 파일을 매칭:grep Linux Ch*[24680]
+
+대문자로 시작하고 언더바가 포함되어있는 파이썬 파일 매칭:grep Ch[A-Z]*_*.py
+
+/etc 디렉토리 안의 파일 확장자가 .conf인 파일 목록 조회하기:grep /etc/*.conf ★
+
+대문자선언VAR과 소문자선언var의 차이:$VAR: 이미 선언되어있는 변수 / $var: 내가 선언한 변수
+
+루트 디렉토리 이름:$HOME
+
+printenv와 echo의 차이:printenv는 변수 사용시 $를 붙이지 않아도 되지만 echo는 $를 붙여야 한다.
+
+
+변수설정법:name=lee, 공백 사용하면 안됨.
+
+age변수에 자신의 나이를 담고 "내 나이는 ...살이다." 출력: 
+
+$ age=23
+
+echo "I am $age years old."
+
+lizard와 snake를 reptiles로 이동
+ - 변수를 사용: $
+ - 패턴매칭을 사용: mv *.txt reptiles
+ 
+shadowing?: 이미 있는 이름으로 별명을 설정하는 것 ★
+
+alias를 취소하는법: unalias

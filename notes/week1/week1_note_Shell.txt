@@ -1,0 +1,121 @@
+Shell
+ ┗ 리눅스 커널과 사용자를 연결해주는 인터페이스
+ ┗ 유저의 입력을 읽고, 해석하고, 프로그램을 실행
+ - Shell Script : 일련의 명령행을 한 파일에 담아놓은 것 (운영체제마다 다름)
+ - 리눅스 운영체제의 표준인 Bash (Bourne again shell)
+
+문법 : 
+<프로그램명> <내용> (space로 구분)
+ - echo : 셸 명령, 내장(빌트인) 명령, 프로그램
+   ┗ 화면에 출력하는 명령
+ - 변수 : <변수명>=<내용> (호출시엔 $<변수명>)  ※space 주의
+ - " " 사용가능
+ - 내장되어있는 변수도 존재 (이 변수들은 모두 대문자로 지정되어있음)
+
+명령
+ - 프로그램 자체 ex) echo
+ - 단순명령(simple command) : 프로그램 + 내용
+ - 결합명령(combined command) : 프로그램 + 옵션 + 내용 (space로 각각 연결한다)
+    ┗ 프로그램을 구체화하는 역할
+    ┗ '-h' -> 명령인자
+    ┗ "ls -l" -> 리스트를 라인별로 출력 (-l : 옵션)
+    ┗ 옵션 : -? ex) -1(1라인으로 출력), -h, -x, -l(라인별로 출력), ···
+     - ls : list //폴더안의 내용을 리스트 출력
+        ┗ cd : change directory
+     - | : 파이프
+       ┗ 명령행 | 명령행 
+        -  less
+           ┗ 이전 명령행의 출력값을 다음 명령행의 입력값으로 보내는 역할
+           ┗ 'echo $PATH | less'
+        - 파이프라인 : 파이프라인으로 연결한 명령행
+
+     - wc, head, cut, grep, sort, uniq ★다음주 퀴즈 예정
+
+ - 명령의 특징
+    - 한 프로그램이 한 가지 일만 한다.
+    - 명령의 조합을 잘 해야 한다. (명령어 개많음. 구글링 ㅅㅅ 사용만 할 줄 알면 됨.)
+
+입력
+ - stdin : standard input/in. 표준 입력
+ - 프롬프트를 통해서 입력되는 입력스트림
+
+출력
+ - stdout : standard output/out. 표준 출력
+ - 출력스트림
+
+Q_00) /bin의 파일 디렉토리를 출력 => ls –l /bin
+
+1. wc
+ - 파일 내용의 줄(line) 수, 단어(word) 수, 문자(char) 수 출력하는 명령
+Q_01) wc로 이 파일(t.txt) 내용 출력하기 => wc t.txt
+Q_02) 지금 디렉토리의 하위 디렉토리 내용의 줄 수, 단어 수, 문자 수 출력하기 => ls | wc
+ - 명령인자
+   ┗ -w : 단어 수만
+   ┗ -l : 줄 수만
+   ┗ -c : 문자 수만
+Q_03) t.txt 의 단어 수 => wc –w t.txt (숫자 뿐만 아니라 파일 이름도 같이 출력됨)
+★Q_04) /bin 파일 + 디렉토리 개수 몇 개인지 => ls –l /bin | wc –l
+
+2. head
+ - 파일의 n번째 줄까지 내용을 화면에 출력하는 명령
+ ┗ -n : head –n3 (default n = 10)
+Q_05) 파일이 90줄일 때 n100이면? => 모두 출력됨
+★Q_06) dl 파일의 1번쨰 줄 단어 수, 글자 수 세기 => head –n1 t.txt | wc –w –c
+                                                  head –n1 t.txt | wc -wc
+★Q_07) /bin 파일 중에서 앞에 5개만 출력하기 => ls /bin | head -n5
+
+3. cut
+ - 파일의 내용 주에서 특정 열만 출력하는 명령
+ - 범위 지정 방법: 
+   ┗ \t : -f
+     ex) James \t 34
+           f1      f2
+         cut –f1 name.txt
+         ┗ 3, 5, 6 -> cut –f3,5,6
+         ┗ 4-6 -> cut –f4-6
+Q_08) 3번째 필드 조회 => cut –f3 animals.txt
+Q_09) 1번째 필드 조회하는데 1번째 줄만 출력 => cut –f1 animals.txt
+   ┗ -c : character
+      ┗ cut –c5 / cut –c0-5 / cut –c1,3,5
+★Q_10) 1번째 필드의 마지막 글자 출력하기 => cut -f1 animals.txt | head -n1 | rev | cut –c1
+   ┗ rev : 내용을 거꾸로 하는 명령어
+   ┗ -d <구분자>
+      ┗ ex) -d, -> ,를 구분자로 하여 cut / -d‘ ’ → 띄어쓰기를 구분자로 하여 cut
+Q_11) 4번째 필드: Lutz, Mark에서 Lutz만 출력하기 (모든 last name만 가져오기)
+        => cut -f4 animals.txt | cut –d, -f1
+=======================================================================================
+4. grep
+ - matching
+ - 대소문자 구분함
+ - 내가 매칭하려는 단어가 포함된 문장 전체를 출력하고 해당 단어를 컬러로 표시
+ - 전문에서 매칭하려는 무언가를 보이고 싶을 때
+Q_4_01) The가 있는 txt파일을 전체(*) 조회하라 ⇒ grep The *.txt
+ - -v: 조간 문자열이 없는 라인 출력 
+Q_4_02) /usr/lib에 포함된 하위 디렉토리 개수 알아내기 (drwxr-xr-x의 d로 개수 알아내기)
+         ⇒ ls –l /usr/lib | cut –c1 | grep d | wc –l
+
+5. sort 
+ - 정렬. 오름차순 (abcd....)
+ - -r (reverse)
+ - -n (숫자 정렬) → sort –n sample.txt
+    ┗ string을 number로 치환하여 정렬
+Q_5_01) animals.txt 3번째 필드가 숫자, 오름차순 정렬 출력 ⇒ cut –f3 animals.txt | sort –n
+Q_5_02) 최댓값 최솟값 찾기 ⇒ cut –f3 animals.txt | sort –n | head –n1 (min)
+                            cut –f3 animals.txt | sort –nr | head –n1 (max)
+Q_5_03) /etc/passwd 디렉토리에서 사용자 이름 정렬하여 추출하기 
+            ⇒ head /etc/passwd | cut –d: -f1 | sort (head는 10줄만 내보내기에 주의)
+전체 출력하기 ⇒ cut –d: -f1 /etc/passwd | sort
+
+Q_5_04) 사용자 중 root가 있는지 확인하기 ⇒ head /etc/passwd | sort | cut –d: -f1 | grep sort
+         ┗ 대소문자를 구분하기에 주의 . _root_ → -w (-w, match only whole words / 정확히 root만 추출해낼 수 있음. Root, ROOT, abcdroot 등은 추출되지 않음)
+Q_5_05) head와 ls의 차이 : ls는 해당 파일을 조회 / head는 해당 파일의 내용을 조회
+
+#letters 내용 조회하기
+6. uniq
+ - 중복된 문자열을 제거해서 보여주되, 인접한 중복 문자열만
+ - -c를 이용하면 중복된 개수도 보여줌
+Q_6_01) 성적표(grades파일)에서 가장 빈번하지 않은 등급부터 출력하기 
+           ⇒ cut –f1 grades | sort | uniq –c | sort –n 
+Q_6_02) sort와 sort –n이 왜 같지?
+Q_6_03) uniq –c한 뒤에 숫자 빼고 등급만 뽑는 법
+          ⇒ cut –f1 grades | sort | uniq –c | sort –n | rev | cut –c1

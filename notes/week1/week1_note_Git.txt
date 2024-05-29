@@ -1,0 +1,100 @@
+Git
+#1. 버전 관리
+ - 파일의 변화를 시간에 따라 저장했다가 나중에 특정 시점의 버전으로 다시 꺼내올 수 있는 시스템
+ - 협업의 용이성
+ - 과거의 버전이 저장되기에 돌아가기 쉬움
+ - 기본 뼈대를 가져오기 좋음
+ - 툴: git
+
+#2. git
+ - 데이터 저장 방식: 스냅샷 (단위가 작음, 메모리 low, 돌아가기 빠름)
+ - 네트워크 필요X → 오프라인
+ - 어떻게 돌아가는가?
+    - if 빈 파일 → 텍스트 입력 → 빈 파일(같은 스냅샷이기에 저장하지 않음. 효율적)
+    - key – value
+       ┗ key는 고유하다 / value = 텍스트 
+ - git 상태
+    - 수정: 파일이 변경된 상태
+    - 커밋: 저장
+    - 스테이지: 스냅샷을 찍어 커밋할 준비가 된 상태
+
+ - 수정
+ - 스테이징 → 커밋
+
+ - 깃 커밋 순서:
+   상태 체크 → (수정) → 스테이징 → 커밋
+   → 상태 체크 → ··· 
+
+① 버전 체크
+ - git —version 
+     * git –v —version (--의 역할: 더블대쉬(--)가 주어지면 더 이상 옵션이 없다는 의미)
+     ls –l
+②사용자 정보 설정하기
+ - name (git config —global user.name XXXXX)
+ - email (git config —global user.email XXXXX@xxxx.com)
+ - 옵션: --global: 전체 시스템에 영향을 준다.
+            ┗ 프로젝트마다 다른 이름을 사용하고 싶을 경우에는 옵션을 제외함.
+ - core.editor – 텍스트 수정
+     ┗vi 빠져나올 때는: q + enter
+ - git help <프로그램명>
+
+Directory
+ - 우리가 말하는 “폴더”
+ - 트리 구조를 가짐
+      animals/
+         ┗ name.txt
+         ┗ age.txt
+          mammals/
+             ┗cow.txt
+          reptile/
+             ┗
+ - 하위 디렉토리 (child) - animals → mammals
+   name.txt → file
+ - 상위 디렉토리 (parent) - mammals → animals
+ - 형제 디렉토리 (sibiling) - mammals, reptiles
+
+ - /로 구분함
+   animals/mammals/cow.txt
+   <디렉토리 / .... / 파일명>
+
+ - 절대경로: root에서 시작
+ - 상대경로: 현재 기준
+     ┗ 나의 현재 위치가 mammals이다. 상위디렉토리로 가고 싶다면
+          1) 절대경로: /...../mammals
+          2) 상대경로: .. (부모 디렉토리로 올라감) / . (현재)
+           - cd: change directory 
+              ┗ex) cd ./mammals (현재 디렉토리에 있는 mammals디렉토리로 들어간다)
+                     cd .. (부모 디렉토리로 올라간다)
+           - pwd: 현재 경로 출력
+           - mkdir: make directory
+Q_01) new_dir로 이동해서 디렉토리 “dir02” 만들어보기 -> mkdir new_dir
+
+③깃 초기화
+ - git init: .git에 모든 변경사항(스냅샷)이 저장된다. 
+
+④ 상태 체크
+ - git status
+ - git에 모르는 파일일 경우: untrackted → git add <txt> →tracked
+ - add 이후에 git commit, 메시지 입력
+ - 모든 파일을 한꺼번에 스테이징 → git add .
+[main (root-commit) 7fe9c73] msg1
+ 1 file changed, 7 insertions(+)
+ create mode 100644 animals.txt
+
+ - branch 정보: main
+ - 7fe9c73: key 정보
+ - msg1: 메시지
+ - 1 file changed, 7 insertions(+): 변경사항
+
+ - git status
+ - git add <파일명>
+ - git commmit –m <메세지>
+
+<수정사항>
+ - git status
+ - git add <파일명>
+ - git commmit –m <메세지>
+
+★ 매 수없에 커밋으로 파일 저장하는 연습하기
+
+

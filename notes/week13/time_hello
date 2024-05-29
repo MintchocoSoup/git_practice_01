@@ -1,0 +1,19 @@
+#!/bin/bash
+
+hour=$( date | cut -d" " -f5 | cut -d: -f1)
+
+if [ $hour -ge 0 ] && [ $hour -lt 9 ]
+then 
+  echo "Good Morning"
+  exit 0
+elif [ $hour -ge 9 ] && [ $hour -lt 17 ]
+then 
+  echo "Good Afternoon"
+  exit 0
+else
+  echo "Good Evening"
+  exit 0
+fi
+
+exit 1
+  
