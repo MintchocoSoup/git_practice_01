@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# 들어오는 인수 개수 프린트
+echo $#
+
+# 들어오는 모든 인수 프린트
+echo $* 
+
+# 모든 인수 순회하면서 하나씩 프린트
+for var in "$*"
+do 
+	echo $var
+done
+
+for var in "$@"
+do 
+	echo [2] $var
+done
+
+
+
+
+
