@@ -32,5 +32,5 @@
 |11|변수, 스크립트 파일 작성|[week11_note](./notes/week11/week11_note.txt)
 |12|Git 사용법 및 github와 replit의 연동|[week12_note](./notes/week12/week12_note.txt)
 |13|if, case문을 이용한 조건문|[week13_note](./notes/week13/w13_note.md)
-|13|for, while을 이용한 반복문|[week14_note](./notes/week14/w14_note.md)
+|14|for, while을 이용한 반복문|[week14_note](./notes/week14/w14_note.md)
   
