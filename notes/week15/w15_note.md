@@ -48,3 +48,19 @@ git checkout -b <name>
   ```sh
   git merge <name>
   ```
+
+### 병합 전략
+- ort (fast-forward)
+  - 기본 전략
+  - 브랜치 A의 포인터가 최신 포인터 B로 이동하는 것
+- recursive
+  - 두 브랜치의 커밋 포인터가 공통된 조상으로 옮겨가서 병합되는 것
+  - 공통되지 않은 부분은 모두 날아감
+
+## 브랜치 삭제
+```sh
+git branch -d <name>
+```
+
+## 브랜치 간의 충돌을 가정
+- 같은 파일을 두 브랜치에게 다르게 수정하기 -> merge
