@@ -1,5 +1,6 @@
 { pkgs }: {
   deps = [
+    pkgs.nano
     pkgs.haskellPackages.daemons
     pkgs.ed
     pkgs.vim
